@@ -1,0 +1,30 @@
+[general]
+framerate = 60
+bars = 38
+sleep_timer = 3
+
+[input]
+method = pipewire
+source = 44
+active = 1
+remix = 1
+virtual = 1
+sample_rate = 48000
+sample_bits = 16
+channels = 2
+
+[output]
+method = noncurses
+channels = mono
+orientation = bottom
+xaxis = none
+
+[smoothing]
+noise_reduction = 85
+
+[eq]
+1 = 0.8
+2 = 0.9
+3 = 1
+4 = 1.1
+5 = 1.2
