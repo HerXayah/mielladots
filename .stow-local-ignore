@@ -2,4 +2,5 @@
 .git
 .ssh
 ./config/mozilla
-Extra
+Extras
+install.sh
