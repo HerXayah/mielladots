@@ -66,4 +66,9 @@ mkdir -p $HOME/wallpapers
 cp -f ./resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
 
 
+# go back to main dir
+cd ../../
+# apply dotfiles lol
+stow .
+
 echo "Installation complete! You can now run 'colorshell' from your terminal or find it in your application launcher."

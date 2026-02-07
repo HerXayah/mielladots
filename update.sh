@@ -51,4 +51,9 @@ chmod +x $XDG_DATA_HOME/colorshell/resources.gresource
 mkdir -p $XDG_CONFIG_HOME/hypr/sources
 cat ./config/hypr/shell/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
 
+# go back to main dir
+cd ../../
+# apply dotfiles lol
+stow .
+
 echo "Update complete. Please restart your session to apply changes."

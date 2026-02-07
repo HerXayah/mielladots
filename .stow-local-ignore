@@ -5,4 +5,7 @@
 ./config/mozilla
 Extras
 install.sh
-UI/
+./UI
+README.md
+update.sh
+./Media
