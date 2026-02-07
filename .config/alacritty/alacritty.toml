@@ -1,0 +1,8 @@
+[window]
+opacity = 0.5
+padding = { x = 10, y = 10 }
+title = "meow~"
+decorations = "none"
+
+[font]
+normal = { family = "Iosevka Nerd Font", style = "Regular" }
