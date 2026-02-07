@@ -73,7 +73,7 @@ stow .
 
 read -p "Is your name Miella?" yn
 case $yn in
-    [Yy]* ) echo "Of course it is! Welcome, Miella!";;
+    [Yy]* ) sh ./Extras/miella.sh;;
     [Nn]* ) echo "Installation complete! You can now run 'colorshell' from your terminal or find it in your application launcher.";;
     * ) echo "Please answer yes or no.";;
 esac

@@ -8,7 +8,7 @@ echo "K fuckwit."
 
 yay -S syncthing --needed
 
-wget -c https://raw.githubusercontent.com/syncthing/syncthing/refs/heads/main/etc/linux-systemd/user/syncthing.service  /tmp/syncthing.service
+wget https://raw.githubusercontent.com/syncthing/syncthing/refs/heads/main/etc/linux-systemd/user/syncthing.service /tmp/syncthing.service
 sudo mv /tmp/syncthing.service /etc/systemd/user/syncthing.service
 sudo systemctl --user enable --now syncthing.service
 

@@ -23,3 +23,7 @@ Dunno. Haven't tested. Maybe Update.sh works. dunno
 
 ![alt text](/media/image.png)
 ![alt text](/media/image2.png)
+
+If your top bar glitches turn GTK4 off
+
+![alt text](/media/image3.png)
