@@ -1,7 +1,8 @@
 .stowrc
 .git
+.gitignore
 .ssh
 ./config/mozilla
 Extras
 install.sh
-UI
+UI/
