@@ -1,0 +1,5 @@
+.stowrc
+.git
+.ssh
+./config/mozilla
+Extra
