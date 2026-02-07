@@ -71,4 +71,9 @@ cd ../../
 # apply dotfiles lol
 stow .
 
-echo "Installation complete! You can now run 'colorshell' from your terminal or find it in your application launcher."
+read -p "Is your name Miella?" yn
+case $yn in
+    [Yy]* ) echo "Of course it is! Welcome, Miella!";;
+    [Nn]* ) echo "Installation complete! You can now run 'colorshell' from your terminal or find it in your application launcher.";;
+    * ) echo "Please answer yes or no.";;
+esac
