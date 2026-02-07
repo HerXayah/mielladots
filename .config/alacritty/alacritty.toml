@@ -1,5 +1,5 @@
 [window]
-opacity = 0.5
+opacity = 0.75
 padding = { x = 10, y = 10 }
 title = "meow~"
 decorations = "none"

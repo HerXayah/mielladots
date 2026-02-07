@@ -8,6 +8,14 @@ APPS_HOME=`[[ -z "$APPS_HOME" ]] && echo -n "$XDG_DATA_HOME/applications" || ech
 
 COLORSHELL_DIR="$PWD/Extras/colorshell"
 
+
+# install shit
+
+yay -Syu --needed git uwsm ocs-url rofi alacritty grim slurp gobject-introspection ttf-nerd-fonts-symbols-mono curl uwsm hyprland hypridle hyprlock hyprpaper socat hyprpicker kitty cliphist wireplumber networkmanager pipewire dart-sass glycin glycin-gtk4 ibus procps-ng hyprpolkitagent jq pnpm gjs typescript aylurs-gtk-shell-git libastal-meta python-pywal16 hyprshot hyprsunset wf-recorder overskride 
+sudo systemctl enable --now NetworkManager
+sudo systemctl enable --user hyprpaper.service
+
+
 # git clone the shell (skip if already exists)
 cd ./Extras/
 if [ ! -d "colorshell" ]; then
