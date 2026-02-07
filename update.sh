@@ -9,23 +9,16 @@ APPS_HOME=`[[ -z "$APPS_HOME" ]] && echo -n "$XDG_DATA_HOME/applications" || ech
 COLORSHELL_DIR="$PWD/Extras/colorshell"
 
 
-# install shit
+echo "Updating ourselves..."
+git pull
 
-yay -Syu --needed git uwsm pokemon-colorscripts-git ocs-url rofi alacritty grim slurp gobject-introspection ttf-nerd-fonts-symbols-mono curl uwsm hyprland hypridle hyprlock hyprpaper socat hyprpicker kitty cliphist wireplumber networkmanager pipewire dart-sass glycin glycin-gtk4 ibus procps-ng hyprpolkitagent jq pnpm gjs typescript aylurs-gtk-shell-git libastal-meta python-pywal16 hyprshot hyprsunset wf-recorder overskride 
-sudo systemctl enable --now NetworkManager
-sudo systemctl enable --user hyprpaper.service
-
+echo "Done."
 
 # git clone the shell (skip if already exists)
-cd ./Extras/
-if [ ! -d "colorshell" ]; then
-  git clone https://github.com/retrozinndev/colorshell
-fi
-cd colorshell
-#pnpm -C "$repo_directory" i && pnpm -C "$repo_directory" update
+cd ./Extras/colorshell
+git pull
 pnpm i && pnpm update
 pnpm build:release
-
 
 mkdir -p $XDG_DATA_HOME/colorshell
 mkdir -p $BIN_HOME
@@ -58,12 +51,4 @@ chmod +x $XDG_DATA_HOME/colorshell/resources.gresource
 mkdir -p $XDG_CONFIG_HOME/hypr/sources
 cat ./config/hypr/shell/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
 
-# copy wallpaper
-
-echo "Copying default wallpaper to $HOME/wallpapers/Default Hypr-chan.jpg"
-mkdir -p $HOME/wallpapers
-#     cp -f $repo_directory/resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
-cp -f ./resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
-
-
-echo "Installation complete! You can now run 'colorshell' from your terminal or find it in your application launcher."
+echo "Update complete. Please restart your session to apply changes."
