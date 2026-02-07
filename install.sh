@@ -36,3 +36,12 @@ cp ./config/hypr/scripts/exec.sh $XDG_CONFIG_HOME/hypr/scripts/exec.sh
 # copy rules into our file, because leeches get beeches
 mkdir -p $XDG_CONFIG_HOME/hypr/sources
 cat ./config/hypr/shell/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
+
+# copy wallpaper
+
+echo "Copying default wallpaper to $HOME/wallpapers/Default Hypr-chan.jpg"
+mkdir -p $HOME/wallpapers
+#     cp -f $repo_directory/resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
+cp -f ./resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
+
+echo "Installation complete! You can now run 'colorshell' from your terminal or find it in your application launcher."
