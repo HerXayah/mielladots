@@ -21,7 +21,6 @@ mkdir -p $XDG_DATA_HOME/colorshell
 # Move from current directory (we're in colorshell/ now)
 echo "Installing colorshell..."
 echo "Installing colorshell to $BIN_HOME and desktop entry to $APPS_HOME"
-#cp -f $repo_directory/build/release/resources.gresource $XDG_DATA_HOME/colorshell
 cp -f ./build/release/resources.gresource $XDG_DATA_HOME/colorshell
 mv ./build/release/colorshell $BIN_HOME/colorshell
 mv ./build/release/colorshell.desktop $APPS_HOME/colorshell.desktop
@@ -30,6 +29,7 @@ mv ./build/release/colorshell.desktop $APPS_HOME/colorshell.desktop
 
 cp ./scripts/gen-pywal.sh $XDG_CONFIG_HOME/hypr/scripts/gen-pywal.sh
 cp ./scripts/color-picker.sh $XDG_CONFIG_HOME/hypr/scripts/color-picker.sh
+cp ./scripts/exec.sh $XDG_CONFIG_HOME/hypr/scripts/exec.sh
 
 # copy rules into our file, because leeches get beeches
 mv ./config/hypr/shell/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
