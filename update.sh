@@ -38,6 +38,9 @@ cp ./config/hypr/scripts/color-picker.sh $XDG_CONFIG_HOME/hypr/scripts/color-pic
 cp ./config/hypr/scripts/exec.sh $XDG_CONFIG_HOME/hypr/scripts/exec.sh
 cp ./config/hypr/scripts/change-wallpaper.sh $XDG_CONFIG_HOME/hypr/scripts/change-wallpaper.sh
 
+# you are fcking evil for making tis default btw.
+sed -i 's/^splash = true/splash = false/' "$XDG_CONFIG_HOME/hypr/scripts/change-wallpaper.sh"
+
 #chmod +x sh and .desktop files
 chmod +x $XDG_CONFIG_HOME/hypr/scripts/gen-pywal.sh
 chmod +x $XDG_CONFIG_HOME/hypr/scripts/color-picker.sh
