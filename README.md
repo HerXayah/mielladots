@@ -11,7 +11,7 @@ For wallpapers just use one with red.
 
 For Themes get:
 
-``Kripton V40`` for Icons
+``Arc-BLACKEST`` for Theme
 ``Papirus-Dark with Dark folders`` for Icons
 ``Twilight Cursors`` for Cusors
 
