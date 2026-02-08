@@ -1,0 +1,1 @@
+Idk i hate AGS and i suck at TS
