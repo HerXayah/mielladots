@@ -2,6 +2,8 @@
 
 Dunno. Am a masochist.
 
+Shell i use here: [colorshell](https://github.com/retrozinndev/colorshell)
+
 
 ## How to install?
 
