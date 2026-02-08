@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+EXTRAS_DIR="$SCRIPT_DIR/Extras"
 
 echo "Last Warning! If you aren't me, you will maybe hate this."
 
@@ -26,7 +27,8 @@ sudo chmod a+wr -R /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/
 spicetify backup apply
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 
-cd /tmp/
+mkdir -p "$EXTRAS_DIR/tmp"
+cd "$EXTRAS_DIR/tmp"
 git clone --depth=1 https://github.com/spicetify/spicetify-themes.git 
 cd spicetify-themes
 cp -r * ~/.config/spicetify/Themes
@@ -38,9 +40,11 @@ echo "$USER ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake
 %wheel ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake" | sudo tee /etc/sudoers.d/scx_cake >/dev/null
 sudo chmod 440 /etc/sudoers.d/scx_cake
 
-mkdir -p "$SCRIPT_DIR/Documents"
-cd "$SCRIPT_DIR/Documents"
-git clone https://github.com/RitzDaCat/scx_cake.git
+mkdir -p "$EXTRAS_DIR/scx_cake"
+cd "$EXTRAS_DIR"
+if [ ! -d "scx_cake" ]; then
+  git clone https://github.com/RitzDaCat/scx_cake.git
+fi
 cd scx_cake
 ./build.sh
 sudo install -Dm755 ./target/release/scx_cake /usr/local/bin/scx_cake
