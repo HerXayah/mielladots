@@ -62,6 +62,8 @@ mkdir -p $HOME/wallpapers
 cp -f ./resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
 
 cd "$SCRIPT_DIR"
+mv ~/.config/hypr/ ~/.config/hypr.bak_$(date +%s) 2>/dev/null || true
+echo "Applying dotfiles with stow..."
 stow .
 
 read -p "Is your name Miella? y or n?" yn
