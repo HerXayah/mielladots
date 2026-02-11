@@ -10,7 +10,14 @@ APPS_HOME=`[[ -z "$APPS_HOME" ]] && echo -n "$XDG_DATA_HOME/applications" || ech
 EXTRAS_DIR="$SCRIPT_DIR/Extras"
 COLORSHELL_DIR="$EXTRAS_DIR/colorshell"
 
-yay -Syu --needed --noconfirm git stow uwsm pokemon-colorscripts-git ocs-url rofi alacritty grim slurp gobject-introspection ttf-nerd-fonts-symbols-mono curl uwsm hyprland hypridle hyprlock hyprpaper socat hyprpicker kitty cliphist wireplumber networkmanager pipewire dart-sass glycin glycin-gtk4 ibus procps-ng hyprpolkitagent jq pnpm gjs typescript aylurs-gtk-shell-git libastal-meta python-pywal16 hyprshot hyprsunset wf-recorder overskride 
+yay -Syu --needed --noconfirm \
+  git stow uwsm pokemon-colorscripts-git ocs-url rofi alacritty \
+  grim slurp gobject-introspection ttf-nerd-fonts-symbols-mono curl \
+  hyprland hypridle hyprlock hyprpaper socat hyprpicker cliphist \
+  wireplumber networkmanager pipewire dart-sass glycin glycin-gtk4 \
+  ibus procps-ng hyprpolkitagent jq pnpm gjs typescript \
+  aylurs-gtk-shell-git libastal-meta python-pywal16 \
+  hyprshot hyprsunset wf-recorder overskride
 sudo systemctl enable --now NetworkManager
 systemctl enable --user hyprpaper.service
 

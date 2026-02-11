@@ -43,7 +43,7 @@ sudo chmod 440 /etc/sudoers.d/scx_cake
 mkdir -p "$EXTRAS_DIR/scx_cake"
 cd "$EXTRAS_DIR"
 if [ ! -d "scx_cake" ]; then
-  git clone https://github.com/RitzDaCat/scx_cake.git
+  git clone https://github.com/RitzDaCat/scx_cake.git -b nightly
 fi
 cd scx_cake
 ./build.sh
@@ -71,4 +71,4 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable --now scx_cake.service
 
-echo "Exiting installer, you can now run 'colorshell' from your terminal or find it in your application launcher."
+echo "Exiting installer."
