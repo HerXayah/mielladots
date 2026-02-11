@@ -1,4 +1,6 @@
+```bash
 #!/bin/bash
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EXTRAS_DIR="$SCRIPT_DIR/Extras"
@@ -9,45 +11,65 @@ sleep 10
 
 echo "K fuckwit."
 
-yay -S syncthing obsidian discord flatpak floorp-bin audacity obs-studio rust --noconfirm --needed
+yay -S syncthing obsidian discord flatpak floorp-bin audacity obs-studio rust unzip git base-devel spicetify-cli --noconfirm --needed
 
-wget https://raw.githubusercontent.com/syncthing/syncthing/refs/heads/main/etc/linux-systemd/user/syncthing.service /tmp/syncthing.service
-sudo mv /tmp/syncthing.service /etc/systemd/user/syncthing.service
 systemctl --user enable --now syncthing.service
 
-sudo pacman -Rss firefox --noconfirm
+sudo pacman -Rns firefox --noconfirm || true
 
 flatpak install -y flathub com.spotify.Client
 
-yay -S spicetify-cli --needed
-spicetify config spotify_path "/var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify"
-spicetify config prefs_path /home/$USER/.var/app/com.spotify.Client/config/spotify/prefs
-sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify
-sudo chmod a+wr -R /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/Apps
+flatpak run com.spotify.Client &
+
+PREFS_PATH="$HOME/.var/app/com.spotify.Client/config/spotify/prefs"
+
+while [ ! -f "$PREFS_PATH" ]; do
+  sleep 1
+done
+
+pkill spotify || true
+
+SPOTIFY_PATH="$(flatpak info --show-location com.spotify.Client)/files/extra/share/spotify"
+
+spicetify config spotify_path "$SPOTIFY_PATH"
+spicetify config prefs_path "$PREFS_PATH"
+
+sudo chown -R "$USER:$USER" "$SPOTIFY_PATH"
+
 spicetify backup apply
+
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 
 mkdir -p "$EXTRAS_DIR/tmp"
 cd "$EXTRAS_DIR/tmp"
-git clone --depth=1 https://github.com/spicetify/spicetify-themes.git 
-cd spicetify-themes
-cp -r * ~/.config/spicetify/Themes
+
+if [ ! -d "spicetify-themes/.git" ]; then
+  git clone --depth=1 https://github.com/spicetify/spicetify-themes.git
+fi
+
+mkdir -p ~/.config/spicetify/Themes
+cp -r spicetify-themes/* ~/.config/spicetify/Themes
+
 spicetify config current_theme Sleek
 spicetify config color_scheme Psycho
 spicetify apply
 
-echo "$USER ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake
-%wheel ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake" | sudo tee /etc/sudoers.d/scx_cake >/dev/null
-sudo chmod 440 /etc/sudoers.d/scx_cake
-
-mkdir -p "$EXTRAS_DIR/scx_cake"
+mkdir -p "$EXTRAS_DIR"
 cd "$EXTRAS_DIR"
-if [ ! -d "scx_cake" ]; then
+
+if [ ! -d "scx_cake/.git" ]; then
   git clone https://github.com/RitzDaCat/scx_cake.git -b nightly
 fi
+
 cd scx_cake
 ./build.sh
+
 sudo install -Dm755 ./target/release/scx_cake /usr/local/bin/scx_cake
+
+echo "$USER ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake
+%wheel ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake" | sudo tee /etc/sudoers.d/scx_cake >/dev/null
+
+sudo chmod 440 /etc/sudoers.d/scx_cake
 
 sudo tee /etc/systemd/system/scx_cake.service >/dev/null <<'EOF'
 [Unit]
@@ -72,3 +94,4 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now scx_cake.service
 
 echo "Exiting installer."
+```
