@@ -17,7 +17,7 @@ yay -Syu --needed --noconfirm \
   wireplumber networkmanager pipewire dart-sass glycin glycin-gtk4 \
   ibus procps-ng hyprpolkitagent jq pnpm gjs typescript \
   aylurs-gtk-shell-git libastal-meta python-pywal16 \
-  hyprshot hyprsunset wf-recorder overskride
+  hyprshot hyprsunset wf-recorder overskride dunst
 sudo systemctl enable --now NetworkManager
 systemctl enable --user hyprpaper.service
 
