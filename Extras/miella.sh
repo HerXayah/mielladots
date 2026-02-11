@@ -9,7 +9,7 @@ sleep 10
 
 echo "K fuckwit."
 
-yay -S syncthing obsidian discord flatpak floorp audacity obs-studio rust --noconfirm --needed
+yay -S syncthing obsidian discord flatpak floorp-bin audacity obs-studio rust --noconfirm --needed
 
 wget https://raw.githubusercontent.com/syncthing/syncthing/refs/heads/main/etc/linux-systemd/user/syncthing.service /tmp/syncthing.service
 sudo mv /tmp/syncthing.service /etc/systemd/user/syncthing.service
