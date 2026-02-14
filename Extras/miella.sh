@@ -2,7 +2,6 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-EXTRAS_DIR="$SCRIPT_DIR/Extras"
 
 echo "Last Warning! If you aren't me, you will maybe hate this."
 
@@ -39,8 +38,7 @@ spicetify backup apply
 
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 
-mkdir -p "$EXTRAS_DIR"
-cd "$EXTRAS_DIR"
+cd "$SCRIPT_DIR"
 
 if [ ! -d "spicetify-themes/.git" ]; then
   git clone --depth=1 https://github.com/spicetify/spicetify-themes.git
@@ -53,7 +51,7 @@ spicetify config current_theme Sleek
 spicetify config color_scheme Psycho
 spicetify apply
 
-cd "$EXTRAS_DIR"
+cd "$SCRIPT_DIR"
 
 if [ ! -d "scx_cake/.git" ]; then
   git clone https://github.com/RitzDaCat/scx_cake.git -b nightly
