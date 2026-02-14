@@ -39,8 +39,8 @@ spicetify backup apply
 
 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 
-mkdir -p "$EXTRAS_DIR/tmp"
-cd "$EXTRAS_DIR/tmp"
+mkdir -p "$EXTRAS_DIR"
+cd "$EXTRAS_DIR"
 
 if [ ! -d "spicetify-themes/.git" ]; then
   git clone --depth=1 https://github.com/spicetify/spicetify-themes.git
