@@ -1,4 +1,3 @@
-```bash
 #!/bin/bash
 set -euo pipefail
 
@@ -94,4 +93,3 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now scx_cake.service
 
 echo "Exiting installer."
-```
