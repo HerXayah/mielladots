@@ -53,7 +53,6 @@ spicetify config current_theme Sleek
 spicetify config color_scheme Psycho
 spicetify apply
 
-mkdir -p "$EXTRAS_DIR"
 cd "$EXTRAS_DIR"
 
 if [ ! -d "scx_cake/.git" ]; then
