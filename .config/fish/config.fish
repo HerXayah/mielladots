@@ -19,6 +19,12 @@ end
 pokemon-colorscripts -r --no-title
 end
 
+alias rm="trash"
+
+# color scheme
+cat ~/.cache/wal/sequences
+source ~/.cache/wal/colors.fish
+
 
 
 starship init fish | source
