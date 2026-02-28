@@ -29,6 +29,8 @@ mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak_$(date +%s) 2>/dev/
 echo "Applying dotfiles with stow..."
 stow .
 
+systemctl --user enable --now hyprpaper.service
+
 mkdir -p "$EXTRAS_DIR"
 cd "$EXTRAS_DIR"
 if [ ! -d "colorshell" ]; then
