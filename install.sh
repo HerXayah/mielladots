@@ -18,8 +18,14 @@ yay -Syu --needed --noconfirm \
   ibus procps-ng hyprpolkitagent jq pnpm gjs typescript \
   aylurs-gtk-shell-git libastal-meta python-pywal16 \
   hyprshot hyprsunset wf-recorder overskride dunst
-sudo systemctl enable --now NetworkManager
 systemctl enable --user hyprpaper.service
+
+cd "$SCRIPT_DIR"
+mv ~/.config/hypr/ ~/.config/hypr.bak_$(date +%s) 2>/dev/null || true
+mv ~/.config/fish/fish_variables ~/.config/fish/fish_variables.bak_$(date +%s) 2>/dev/null || true
+mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak_$(date +%s) 2>/dev/null || true
+echo "Applying dotfiles with stow..."
+stow .
 
 mkdir -p "$EXTRAS_DIR"
 cd "$EXTRAS_DIR"
@@ -55,16 +61,16 @@ chmod +x $APPS_HOME/colorshell.desktop
 chmod +x $XDG_DATA_HOME/colorshell/resources.gresource
 
 mkdir -p $XDG_CONFIG_HOME/hypr/sources
-cat ./config/hypr/shell/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
+
+touch $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
+cd "$SCRIPT_DIR"
+cat $COLORSHELL_DIR/config/hypr/shell/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
 
 echo "Copying default wallpaper to $HOME/wallpapers/Default Hypr-chan.jpg"
 mkdir -p $HOME/wallpapers
 cp -f ./resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
 
-cd "$SCRIPT_DIR"
-mv ~/.config/hypr/ ~/.config/hypr.bak_$(date +%s) 2>/dev/null || true
-echo "Applying dotfiles with stow..."
-stow .
+wal -i "$HOME/wallpapers/Default Hypr-chan.jpg
 
 read -p "Is your name Miella? y or n?" yn
 case $yn in
