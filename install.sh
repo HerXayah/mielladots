@@ -10,6 +10,8 @@ APPS_HOME=`[[ -z "$APPS_HOME" ]] && echo -n "$XDG_DATA_HOME/applications" || ech
 EXTRAS_DIR="$SCRIPT_DIR/Extras"
 COLORSHELL_DIR="$EXTRAS_DIR/colorshell"
 
+sudo pacman -Rns ibus
+
 yay -Syu --needed --noconfirm \
   git stow uwsm pokemon-colorscripts-git ocs-url rofi alacritty \
   grim slurp gobject-introspection ttf-nerd-fonts-symbols-mono curl \
@@ -17,8 +19,8 @@ yay -Syu --needed --noconfirm \
   wireplumber networkmanager pipewire dart-sass glycin glycin-gtk4 \
   ibus procps-ng hyprpolkitagent jq pnpm gjs typescript \
   aylurs-gtk-shell-git libastal-meta python-pywal16 \
-  hyprshot hyprsunset wf-recorder overskride dunst
-systemctl enable --user hyprpaper.service
+  hyprshot hyprsunset wf-recorder overskride dunst \
+  fcitx5 fcitx5-configtool fcitx5-qt
 
 cd "$SCRIPT_DIR"
 mv ~/.config/hypr/ ~/.config/hypr.bak_$(date +%s) 2>/dev/null || true
