@@ -48,25 +48,18 @@ cp -f ./build/release/resources.gresource $XDG_DATA_HOME/colorshell
 mv ./build/release/colorshell $BIN_HOME/colorshell
 mv ./build/release/colorshell.desktop $APPS_HOME/colorshell.desktop
 
-mkdir -p $XDG_CONFIG_HOME/hypr/scripts
-cp ./config/hypr/scripts/gen-pywal.sh $XDG_CONFIG_HOME/hypr/scripts/gen-pywal.sh
-cp ./config/hypr/scripts/color-picker.sh $XDG_CONFIG_HOME/hypr/scripts/color-picker.sh
-cp ./config/hypr/scripts/exec.sh $XDG_CONFIG_HOME/hypr/scripts/exec.sh
-cp ./config/hypr/scripts/change-wallpaper.sh $XDG_CONFIG_HOME/hypr/scripts/change-wallpaper.sh
-
-chmod +x $XDG_CONFIG_HOME/hypr/scripts/gen-pywal.sh
-chmod +x $XDG_CONFIG_HOME/hypr/scripts/color-picker.sh
-chmod +x $XDG_CONFIG_HOME/hypr/scripts/exec.sh
-chmod +x $XDG_CONFIG_HOME/hypr/scripts/change-wallpaper.sh
 chmod +x $BIN_HOME/colorshell
 chmod +x $APPS_HOME/colorshell.desktop
 chmod +x $XDG_DATA_HOME/colorshell/resources.gresource
 
 mkdir -p $XDG_CONFIG_HOME/hypr/sources
 
+rm -f $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
 touch $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
+
 cd "$SCRIPT_DIR"
-cat $COLORSHELL_DIR/config/hypr/shell/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
+
+cat $COLORSHELL_DIR/resources/config/hyprland/rules.conf >> $XDG_CONFIG_HOME/hypr/sources/customwindows.conf
 
 echo "Copying default wallpaper to $HOME/wallpapers/Default Hypr-chan.jpg"
 mkdir -p $HOME/wallpapers
