@@ -37,6 +37,7 @@ if [ ! -d "colorshell" ]; then
   git clone https://github.com/retrozinndev/colorshell
 fi
 cd colorshell
+git pull
 pnpm i && pnpm update
 pnpm build:release
 
