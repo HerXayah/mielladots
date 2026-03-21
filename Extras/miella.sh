@@ -60,10 +60,10 @@ fi
 cd scx_cake
 ./build.sh
 
-sudo install -Dm755 ./target/release/scx_cake /usr/local/bin/scx_cake
+sudo install -Dm755 ./target/release/scx_cake /usr/bin/scx_cake
 
-echo "$USER ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake
-%wheel ALL=(ALL) NOPASSWD: /usr/local/bin/scx_cake" | sudo tee /etc/sudoers.d/scx_cake >/dev/null
+echo "$USER ALL=(ALL) NOPASSWD: /usr/bin/scx_cake
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/scx_cake" | sudo tee /etc/sudoers.d/scx_cake >/dev/null
 
 sudo chmod 440 /etc/sudoers.d/scx_cake
 
@@ -71,11 +71,11 @@ sudo tee /etc/systemd/system/scx_cake.service >/dev/null <<'EOF'
 [Unit]
 Description=scx_cake sched_ext Scheduler
 After=multi-user.target
-ConditionPathExists=/usr/local/bin/scx_cake
+ConditionPathExists=/usr/bin/scx_cake
 
 [Service]
 Type=exec
-ExecStart=/usr/local/bin/scx_cake
+ExecStart=/usr/bin/scx_cake
 Restart=always
 RestartSec=0
 CapabilityBoundingSet=CAP_SYS_ADMIN CAP_SYS_NICE CAP_BPF
