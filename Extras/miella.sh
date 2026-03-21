@@ -9,7 +9,7 @@ sleep 10
 
 echo "K fuckwit."
 
-yay -S syncthing obsidian discord flatpak floorp-bin audacity obs-studio rust unzip git base-devel spicetify-cli --noconfirm --needed
+yay -S activitywatch-bin aw-watcher-media-player syncthing obsidian discord flatpak floorp-bin audacity obs-studio rust unzip git base-devel spicetify-cli --noconfirm --needed
 
 systemctl --user enable --now syncthing.service
 
@@ -40,9 +40,13 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resource
 
 cd "$SCRIPT_DIR"
 
+rm -rf spicetify-themes
+
 if [ ! -d "spicetify-themes/.git" ]; then
   git clone --depth=1 https://github.com/spicetify/spicetify-themes.git
 fi
+
+
 
 mkdir -p ~/.config/spicetify/Themes
 cp -r spicetify-themes/* ~/.config/spicetify/Themes
@@ -58,6 +62,7 @@ if [ ! -d "scx_cake/.git" ]; then
 fi
 
 cd scx_cake
+git pull
 ./build.sh
 
 sudo install -Dm755 ./target/release/scx_cake /usr/bin/scx_cake
@@ -88,5 +93,14 @@ EOF
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now scx_cake.service
+
+cd "$SCRIPT_DIR"
+
+if [ ! -d "aw-watcher-window-hyprland/.git" ]; then
+  git clone aw-watcher-window-hyprland.git
+fi
+
+cd aw-watcher-window-hyprland
+cargo install --path .
 
 echo "Exiting installer."

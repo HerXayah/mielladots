@@ -5,6 +5,7 @@ SETUVAR _fisher_danhper_2F_fish_2D_ssh_2D_agent_files:\x7e/\x2econfig/fish/funct
 SETUVAR _fisher_plugins:danhper/fish\x2dssh\x2dagent
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_greeting:\x1d
+SETUVAR fish_user_paths:/home/miella/\x2ecargo/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:true
 SETUVAR pure_color_at_sign:pure_color_mute
