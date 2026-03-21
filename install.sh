@@ -17,7 +17,7 @@ yay -Syu --needed --noconfirm \
   grim slurp gobject-introspection ttf-nerd-fonts-symbols-mono curl \
   hyprland hypridle hyprlock hyprpaper socat hyprpicker cliphist \
   wireplumber networkmanager pipewire dart-sass glycin glycin-gtk4 \
-  ibus procps-ng hyprpolkitagent jq pnpm gjs typescript \
+  procps-ng hyprpolkitagent jq pnpm gjs typescript \
   aylurs-gtk-shell-git libastal-meta python-pywal16 \
   hyprshot hyprsunset wf-recorder overskride dunst \
   fcitx5 fcitx5-configtool fcitx5-qt
@@ -65,9 +65,9 @@ cat $COLORSHELL_DIR/resources/config/hyprland/rules.conf >> $XDG_CONFIG_HOME/hyp
 
 echo "Copying default wallpaper to $HOME/wallpapers/Default Hypr-chan.jpg"
 mkdir -p $HOME/wallpapers
-cp -f ./resources/wallpaper_default.jpg "$HOME/wallpapers/Default Hypr-chan.jpg"
+cp -f "$COLORSHELL_DIR/resources/wallpaper_default.jpg" "$HOME/wallpapers/Default Hypr-chan.jpg"
 
-wal -i "$HOME/wallpapers/Default Hypr-chan.jpg
+wal -i "$HOME/wallpapers/Default Hypr-chan.jpg"
 
 read -p "Is your name Miella? y or n?" yn
 case $yn in
